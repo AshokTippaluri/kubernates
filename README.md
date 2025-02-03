@@ -1,1 +1,5 @@
 # kubernates
+
+## Resources
+
+### Namespace :
