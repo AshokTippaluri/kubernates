@@ -21,6 +21,8 @@
 ### JOB :
 
 
+## Commands
+
 kubectl apply -f pod.yaml
 
 kubectl get pods
