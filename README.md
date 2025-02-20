@@ -31,8 +31,12 @@ kubectl get pods -o wide
 
 kubectl delete -f pod.yaml
 
-kubectl get pods <podname> -o wide
+kubectl get pods podname -o wide
 
-kubectl log -f <podname>
+kubectl log -f podname
+
+kubectl exec podname -- uptime
+
+kubectl exec -it podname -- /bin/bash
 
 
