@@ -1,5 +1,21 @@
 # kubernates
 
-## Resources
+## OBJECTS
 
-### Namespace :
+### POD :
+
+### SERVICE :
+
+### VOLUME :
+
+### NAMESPACE :
+
+### REPLICASET :
+
+### DEPLOYMENT :
+
+### STATEFULSET :
+
+### DAEMONSET :
+
+### JOB :
