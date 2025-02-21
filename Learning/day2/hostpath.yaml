@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Ashok; sleep 25; done"]
+      volumeMounts:
+        - mountPath: /tmp
+          name: ashok
+  restartPolicy: Never
+  volumes:
+    - name: ashok
+      hostPath:
+        path: /tmp/data
