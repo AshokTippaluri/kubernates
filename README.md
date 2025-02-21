@@ -43,4 +43,20 @@ kubectl exec testpod -c c01 -- uptime  -->
 
 kubectl exec -it podname -- /bin/bash || kubectl exec -it podname -c c01 -- /bin/bash
 
+kubectl get pods --show-labels
+
+kubectl get pods -l key=value || kubectl get pods -l key!=value
+
+kubectl label pods podname key=value
+
+kubectl label node podname key=value
+
+kubectl get pods -l 'key in (value1, value2)'
+
+kubectl get pods -l 'key notin (value1, value2)'
+
+kubectl delete pods -l 'key notin (value1, value2)'
+
+
+
 
