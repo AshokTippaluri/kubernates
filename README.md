@@ -57,6 +57,11 @@ kubectl get pods -l 'key notin (value1, value2)'
 
 kubectl delete pods -l 'key notin (value1, value2)'
 
+kubectl get rs
+
+kubectl describe rs nameRs
+
+
 
 
 
