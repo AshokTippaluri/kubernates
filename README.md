@@ -61,6 +61,21 @@ kubectl get rs
 
 kubectl describe rs nameRs
 
+kubectl delete rs nameRs
+
+kubectl get deploy
+
+kubectl describe deploy mydeploy
+
+kubectl rollout status deploy/mydeploy
+
+kubectl rollout history deploy/mydeploy
+
+kubectl rollout undo deploy/mydeploy --to-revision=1|2|3...
+
+kubectl delete deploy mydeploy
+
+
 
 
 
