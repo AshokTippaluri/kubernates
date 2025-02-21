@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apache
+  labels:
+    myvalue: demo
+spec:
+  containers:
+    - name: c01
+      image: httpd
+      ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+  selector:
+    myvalue: demo
+  type: NodePort
