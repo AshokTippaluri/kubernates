@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ashok
+  labels:
+    name: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: ashok
+  template:
+    metadata:
+      name: ashok
+      labels:
+        name: ashok
+    spec:
+      nodeSelector:
+        name: worker2
+      containers:
+        - name: ubuntu
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo Hello-Ashok; sleep 5; done"]
+          env:
+           - name: job
+             value: SRE
+           - name: reddy
+             value: "Ashok Reddy"
