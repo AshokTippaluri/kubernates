@@ -1,4 +1,37 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learndeploy
+  labels:
+    env: dev
+    env: k8
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: deploy
+  template:
+    metadata:
+      name: podtemplate
+      labels:
+        name: deploy
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        command: ["/bin/bash", "-c", "while true; do echo Hello-Ashok_chandra_reddy; sleep 5; done"]
+        env:
+        - name: job
+          value: SRE
+        - name: reddy
+          value: "Ashok Reddy"
+        volumeMounts:
+        - name: vol-claim
+          mountPath: /data
+      volumes:
+      - name: vol-claim
+        persistentVolumeClaim:
+          claimName: testvol-claim
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
