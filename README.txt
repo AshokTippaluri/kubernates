@@ -3,6 +3,33 @@
 ## OBJECTS
 
 ### POD :
+A Pod is the basic execution unit in Kubernetes, consisting of:
+
+1. One or more containers (e.g., Docker containers)
+2. Shared storage/volumes for containers to access
+3. Shared networking with unique IP address
+4. Specifications for containers' runtime environment
+
+Characteristics of Pods:
+
+1. Ephemeral: Pods are temporary and can be deleted/recreated
+2. Collocated: Containers in Pod run on same node/host
+3. Shared context: Containers share same network, storage, and runtime environment
+4. Managed by Kubernetes: Pods are created, scheduled, and managed by Kubernetes
+
+Pod Components:
+
+1. Containers: One or more containers (e.g., Docker)
+2. Volumes: Shared storage for containers
+3. Init Containers: Special containers running before main containers
+4. Pod Specifications: Metadata defining Pod characteristics
+
+Pod Lifecycle:
+
+1. Pending: Pod scheduled but not running
+2. Running: Pod active and containers running
+3. Succeeded: Pod completed successfully
+4. Failed: Pod failed or terminated abnormally
 
 ### SERVICE :
 
