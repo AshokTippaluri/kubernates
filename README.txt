@@ -1,8 +1,25 @@
-# kubernates
+kubernates
 
-## OBJECTS
+OBJECTS -
+1. Pod: Basic execution unit, 1+ containers, shared resources
+2. Node: Single worker machine in Kubernetes cluster, hosts Pods
+3. Namespace: Virtual cluster within physical cluster, isolates resources
+4. Deployment: Manages Pod creation, scaling, updates, and deletion
+5. ReplicaSet: Ensures specified number of identical Pods running
+6. StatefulSet: Manages stateful applications, persistent storage
+7. DaemonSet: Runs one Pod per Node, typically for monitoring/logging
+8. Job: Creates Pods for batch jobs, ensures completion
+9. CronJob: Schedules Jobs to run at specific times/intervals
+10. Service: Abstracts access to Pods, provides network identity
+11. Ingress: Manages external access to Services, routes traffic
+12. ConfigMap: Stores configuration data for Pods and containers
+13. Secret: Stores sensitive data (e.g., passwords, keys) securely
+14. PersistentVolume (PV): Network storage resource for Pods
+15. PersistentVolumeClaim (PVC): Request for PV storage by Pods
+16. Role: Defines permissions for resources within Namespace
+17. RoleBinding: Grants permissions defined by Role to users/groups
 
-### POD :
+POD :
 A Pod is the basic execution unit in Kubernetes, consisting of:
 
 1. One or more containers (e.g., Docker containers)
@@ -26,29 +43,32 @@ Pod Components:
 
 Pod Lifecycle:
 
-1. Pending: Pod scheduled but not running
-2. Running: Pod active and containers running
-3. Succeeded: Pod completed successfully
-4. Failed: Pod failed or terminated abnormally
+1. Pending: The pod has been accepted by kubernates syatem, but not running or if the pod can not sechudle because of resources constrains.
+2. ContainerCreating - Container has been bounded to the node or one or more container image is still downloading or one or more container is still creating.
+3. Running: Pod active and containers running
+4. Succeeded: Pod completed successfully
+5. Failed: Pod failed or terminated abnormally or container exited non zero status or was turminated by system.
+6. Unknown: state of the pod could not uptained or network errors like communication to hosts
+7. Terminating: The pod as been terminated by api call.
 
-### SERVICE :
+ SERVICE :
 
-### VOLUME :
+ VOLUME :
 
-### NAMESPACE :
+ NAMESPACE :
 
-### REPLICASET :
+ REPLICASET :
 
-### DEPLOYMENT :
+ DEPLOYMENT :
 
-### STATEFULSET :
+ STATEFULSET :
 
-### DAEMONSET :
+ DAEMONSET :
 
-### JOB :
+ JOB :
 
 
-## Commands
+ Commands
 
 kubectl apply -f pod.yaml
 
@@ -103,6 +123,11 @@ kubectl rollout undo deploy/mydeploy --to-revision=1|2|3...
 kubectl delete deploy mydeploy
 
 
+Troubleshoot:
+kubectl get pod podname
+kubectl describe pod podname
+kubectl logs -f podname
+kubectl exec podname -it -- /bin/bash
 
 
 
