@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+        - name: init-setup
+          image: busybox
+          command: ["/bin/sh", "-c", "echo '<h1>Welcome to NGINX</h1>' > /usr/share/nginx/html/index.html"]
+          volumeMounts:
+            - name: nginx-html
+              mountPath: /usr/share/nginx/html
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-html
+              mountPath: /usr/share/nginx/html
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          lifecycle:
+            preStart:
+              exec:
+                command: ["/bin/sh", "-c", "echo 'PreStart: Initializing NGINX' > /tmp/prestart.log"]
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "echo 'PostStart: NGINX is running' > /tmp/poststart.log"]
+            postStop:
+              exec:
+                command: ["/bin/sh", "-c", "echo 'PostStop: Cleaning up resources' > /tmp/poststop.log"]
+      volumes:
+        - name: nginx-html
+          emptyDir: {}
