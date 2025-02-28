@@ -119,7 +119,7 @@ kubectl rollout status deploy/mydeploy
 kubectl rollout history deploy/mydeploy
 
 kubectl rollout undo deploy/mydeploy --to-revision=1|2|3...
-
+kubectl delete pvc -l app=nginx
 kubectl delete deploy mydeploy
 
 
@@ -128,6 +128,10 @@ kubectl get pod podname
 kubectl describe pod podname
 kubectl logs -f podname
 kubectl exec podname -it -- /bin/bash
+
+sts
+kubectl exec nginx-statefulset-0 -- curl nginx-statefulset-1(podname).nginx-headless(servicename)
+kubectl exec nginx-statefulset-1 -- sh -c 'echo nginx-statefulset-0 > /usr/share/nginx/html/nginx.html'
 
 
 
