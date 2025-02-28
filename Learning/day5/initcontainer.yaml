@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  volumes:
+  - name: shared-repo
+    emptyDir: {}
+  initContainers:
+  - name: init-container
+    image: alpine/git
+    command: ['sh', '-c', 'git clone https://github.com/AshokTippaluri/kubernates.git /shared/repo']
+    volumeMounts:
+    - name: shared-repo
+      mountPath: /shared
+  containers:
+  - name: my-container
+    image: nginx
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: shared-repo
+      mountPath: /usr/share/nginx/html/repo
