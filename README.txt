@@ -133,6 +133,9 @@ sts
 kubectl exec nginx-statefulset-0 -- curl nginx-statefulset-1(podname).nginx-headless(servicename)
 kubectl exec nginx-statefulset-1 -- sh -c 'echo nginx-statefulset-0 > /usr/share/nginx/html/nginx.html'
 
+Namespace Switch
+kubectl config set-context $(kubectl config current-context) --namespace=namespaceName
+
 
 
 
