@@ -1,0 +1,21 @@
+sudo snap install helm --classic
+
+
+helm repo list
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm search repo jenkins
+helm show values bitnami/tomcat
+helm show readme bitnami/tomcat
+helm install testchart bitnami/tomcat
+helm install testchart bitnami/tomcat --set service.type=NodePort
+helm install testchart bitnami/tomcat --version 0.4.0
+helm get manifest testchart
+helm get values testchart
+helm list
+helm delete testchart
+helm upgrade testchart bitnami/tomcat
+helm rollback testchart 1
+helm repo add 
+helm install tomcat-bitnami bitnami/tomcat
+helm history testchart
+helm pull --untar tomcat-bitnami
